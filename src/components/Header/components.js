@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components'
 
 export const HeaderWrapper = styled.div`
@@ -17,7 +18,7 @@ export const HeaderWrapper = styled.div`
     background-color: var(--light-blue);
 `
 
-export const Title = styled.div`
+export const Title = styled(NavLink)`
     /* padding-top: 5px;
     font-family: "Boeotia"; */
     font-size: 1.7rem;

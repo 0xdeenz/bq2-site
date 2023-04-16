@@ -111,7 +111,7 @@ export default function Header ({ onOpen }) {
 
     return (
         <HeaderWrapper>
-            <Title>
+            <Title to="/">
                 bq2
             </Title>
             <ButtonsComponent />

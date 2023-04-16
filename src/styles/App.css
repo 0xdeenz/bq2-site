@@ -1,0 +1,19 @@
+* {
+    text-align: center;
+    font-family: 'Chicago';
+    color: #3F4531;
+}
+
+:root {
+    --background: #FBFA95;
+    --alt-background: #3F4531;
+    --main: #3F4531;
+    --success: #499167;
+    --error: #EE2E31;
+    --box: #FFF8F0;
+
+    --blue: #235789; 
+    --light-blue: #BDD5EA;
+
+    --breakpoint: 820px;
+}

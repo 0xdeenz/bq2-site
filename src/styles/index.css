@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Chicago';
+    src: url(./fonts/Chicago.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Boeotia';
+    src: url(./fonts/Boeotia.ttf) format('truetype');
+}

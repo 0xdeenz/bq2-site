@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
+    "@ethersproject/providers": "^5.7.2",
     "@metamask/jazzicon": "^2.0.0",
     "@reduxjs/toolkit": "^1.9.3",
     "@web3-react/core": "^6.1.9",

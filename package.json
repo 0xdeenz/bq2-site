@@ -3,28 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bq-core/data": "^1.0.0",
+    "@bq-core/lib": "^1.0.6",
     "@chakra-ui/react": "^2.5.5",
     "@ethersproject/providers": "^5.7.2",
     "@metamask/jazzicon": "^2.0.0",
     "@reduxjs/toolkit": "^1.9.3",
+    "@semaphore-protocol/identity": "^3.6.0",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.13",
     "@web3-react/walletlink-connector": "^6.2.13",
-    "buffer": "^6.0.3",
+    "assert": "^2.0.0",
     "ethers": "^6.3.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
     "react": "^18.2.0",
-    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "styled-components": "^5.3.9"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build"
+    "start": "craco start",
+    "build": "craco build"
   },
   "eslintConfig": {
     "extends": [
@@ -34,14 +40,21 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "process": "^0.11.10",
+    "react-error-overlay": "^6.0.9"
   }
 }

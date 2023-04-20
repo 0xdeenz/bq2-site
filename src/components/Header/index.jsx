@@ -1,22 +1,19 @@
 import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useWeb3React } from '@web3-react/core';
 import Jazzicon from "@metamask/jazzicon";
 
 import { truncateAddress } from '../../hooks/utils';
-import { CHAIN_PARAMETERS } from '../../constants/chain';
 import { setModal } from '../../state/modal/reducer';
 import { connectors } from '../WalletModal/connectors';
 import { ButtonsWrapper, ConnectButton, HeaderWrapper, StyledIdenticon, Title } from './components';
-import { setCorrectChain } from '../../state/chain/reducer';
+import { setIdentitySecret } from '../../state/identitySecret/reducer';
+
 
 export default function Header ({ onOpen }) {
-    const correctChain = useSelector(state => state.chain.correctChain);
-
     const dispatch = useDispatch();
     const {
         library,
-        chainId,
         account,
         activate,
         deactivate,
@@ -31,45 +28,41 @@ export default function Header ({ onOpen }) {
     }, []);
 
     useEffect(() => {
-        if (parseInt(CHAIN_PARAMETERS.chainId) === chainId) {
-            dispatch(setCorrectChain(true))
-        } else {
-            dispatch(setCorrectChain(false))
+        const fetchData = async () => {
+            if (account) {
+                try {
+                    const identitySecret = await library.getSigner()
+                        .signMessage("bq2-demo-site\nYour signature of this message will be used to generate your unique Semaphore identity") 
+
+                    dispatch(setIdentitySecret(identitySecret))
+                } catch (err) {
+                    deactivate()
+                    dispatch(setIdentitySecret(undefined))
+                }
+            }
+        }
+
+        fetchData()
+    // eslint-disable-next-line
+    }, [account])
+
+    useEffect(() => {
+        if (!active) {
+            dispatch(setIdentitySecret(undefined))
         }
     // eslint-disable-next-line
-    }, [chainId])
+    }, [active])
 
     const handleConnect = () => {
         onOpen()
         dispatch(setModal('connect-wallet'))
     }
 
-    const handleDisconnect = () => {
+    const handleDisconnect = async () => {
         deactivate()
         dispatch(setModal(''))
         window.localStorage.setItem("provider", "");
     }
-
-    const switchNetwork = async () => {
-        try {
-            await library.provider.request({
-                method: "wallet_switchEthereumChain",
-                params: [{ chainId: CHAIN_PARAMETERS.chainId }]
-            });
-        } catch (switchError) {
-          if (switchError.code === 4902) {
-                try {
-                    await library.provider.request({
-                        method: "wallet_addEthereumChain",
-                        params: [CHAIN_PARAMETERS]
-                    });
-                    console.log('here')
-                } catch (error) {
-                    console.log(error);
-                }
-          }
-        }
-    };
 
     function Identicon() {
         const ref = useRef();
@@ -87,19 +80,11 @@ export default function Header ({ onOpen }) {
 
     function ButtonsComponent () {
         if (active) {
-            if (correctChain) {
-                return(
-                    <ButtonsWrapper>
-                        <ConnectButton onClick={handleDisconnect} connected={true}><Identicon />&nbsp;&nbsp;{ truncateAddress(account) }</ConnectButton>
-                    </ButtonsWrapper>
-                )
-            } else {  // Uncorrect chain, prompt the change
-                return(
-                    <ButtonsWrapper>
-                        <ConnectButton onClick={switchNetwork} wrongChain={true}>Change Network</ConnectButton>
-                    </ButtonsWrapper>
-                )
-            }
+            return(
+                <ButtonsWrapper>
+                    <ConnectButton onClick={handleDisconnect} connected={true}><Identicon />&nbsp;&nbsp;{ truncateAddress(account) }</ConnectButton>
+                </ButtonsWrapper>
+            )
         } else {  
             return (
                 <ButtonsWrapper>

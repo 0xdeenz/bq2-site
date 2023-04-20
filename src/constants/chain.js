@@ -28,3 +28,15 @@ export const DEPLOYED_CONTRACTS = {
 }
 
 export const PROVIDER = new ethers.JsonRpcProvider(process.env.REACT_APP_MATIC_QUICKNODE_KEY)
+
+export const CREDENTIAL_IDS = {
+    'fundamentals': 100,
+    'ethereum': 200,
+    'smartContracts': 300
+}
+
+export const CREDENTIAL_IDS_TO_QUIZ_NUMBER = {
+    100: 1,
+    200: 2,
+    300: 3
+}

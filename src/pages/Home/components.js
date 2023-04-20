@@ -141,7 +141,7 @@ export const MintText = styled.div`
 `
 
 export const MintComponents = styled.div`
-    width: 50%;
+    width: 35%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -149,6 +149,8 @@ export const MintComponents = styled.div`
 
     @media (max-width: 1000px) {
         flex-direction: column;
+        
+    width: 30%;
         height: 70px;
     }
 `
@@ -159,17 +161,29 @@ export const MintInput = styled.input`
     border-radius: 5px;
     padding: 5px 10px;
     margin: 4px 0px 4px 0px;
-    box-shadow: 2px 2px 2px 1px var(--main);
     border: 1px solid var(--main);
-    transition: all 0.1s ease-in-out;
     user-select: none;
     
+    ${(props) => props.disabled ? DisabledInput : EnabledInput}
+`
+
+const EnabledInput = css`
+    color: var(--blue);
+    transition: all 0.1s ease-in-out;
+    box-shadow: 2px 2px 2px 1px var(--main);
+
     &:focus {
         outline: 0;
         border: 1px solid var(--blue);
         box-shadow: 0 0 0 white;
         margin: 6px 0px 2px 0px;
     }
+`
+
+const DisabledInput = css`
+    cursor: not-allowed;
+    background-color: var(--box);
+    color: var(--main);
 `
 
 export const MintButton = styled.button`
@@ -184,7 +198,6 @@ export const MintButton = styled.button`
     font-size: 16px;
     user-select: none;
     border: 1px solid var(--main);
-    cursor: not-allowed;
     
     ${(props) => props.disabled ? DisabledButton : EnabledButton}
     
@@ -207,6 +220,7 @@ const EnabledButton = css`
 `
 
 const DisabledButton = css`
+    cursor: not-allowed;
     background-color: var(--box);
     color: var(--main);
 `

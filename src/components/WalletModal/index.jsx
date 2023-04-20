@@ -83,7 +83,7 @@ export default function WalletModal ({ isOpen, closeModal }) {
                             activate(connectors.injected);
                             setProvider("injected");
                             closeModal();
-                            }}
+                        }}
                     >
                         <ButtonImage
                             src={require("../../images/mm.png")}

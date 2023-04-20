@@ -13,6 +13,10 @@ import ContentWrapper from '../components/ContentWrapper';
 import NotFound from './NotFound';
 import QuizPage from './QuizPage';
 
+import fundamentalsQuiz from "../quizes/fundamentals.json"
+import ethereumQuiz from "../quizes/ethereum.json"
+import smartContractsQuiz from "../quizes/smart-contracts.json"
+
 function App() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const dispatch = useDispatch()
@@ -26,7 +30,9 @@ function App() {
                     <ContentWrapper>
                         <Routes>
                                 <Route path="/" element={<Home />} />
-                                <Route path="/quiz/*" element={<QuizPage />} />
+                                <Route path="/quiz/1" element={<QuizPage quiz={fundamentalsQuiz} />} />
+                                <Route path="/quiz/2" element={<QuizPage quiz={ethereumQuiz} />} />
+                                <Route path="/quiz/3" element={<QuizPage quiz={smartContractsQuiz} />} />
                                 <Route path="/*" element={<NotFound />} />
                         </Routes>
                     </ContentWrapper>

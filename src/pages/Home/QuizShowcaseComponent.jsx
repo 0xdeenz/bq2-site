@@ -18,7 +18,7 @@ export default function QuizShowcaseComponent () {
     return(
         <TestsShowcase>
             <TitleTest>
-                Demo Case: ZK-Learning
+                Demo Case: Web3 Basics
             </TitleTest>
             <TestsWrapper>
                 <TestWrapper>

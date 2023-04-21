@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 
 export const truncateAddress = (address) => {
-    if (!address) return "No Account";
+    if (!address) return "Enter Address";
     const match = address.match(
         /^(0x[a-zA-Z0-9]{3})[a-zA-Z0-9]+([a-zA-Z0-9]{3})$/
     );

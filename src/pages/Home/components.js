@@ -230,3 +230,29 @@ export const TitleTest = styled.div`
     text-align: start;
     font-size: 1.5rem;
 `
+
+export const Toast = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    text-align: justify;
+
+    background-color: ${(props) => props.success ? `var(--success)` : `var(--light-blue)`};
+    color: var(--main);
+
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 12px;
+    box-shadow: 2px 2px 2px 1px var(--main);
+    border: 1px solid var(--main);
+`
+
+export const ToastTitle = styled.div`
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+`
+
+export const ToastDescription = styled.div`
+    font-size: 0.8rem;
+`

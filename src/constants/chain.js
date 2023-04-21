@@ -40,3 +40,12 @@ export const CREDENTIAL_IDS_TO_QUIZ_NUMBER = {
     200: 2,
     300: 3
 }
+
+export const TREE_DEPTH = 16
+
+export const TEST_DEPTH = 4
+
+export const BQT_CONTRACT = {
+    address: "0xEeA8CA7Ba0283156613F574F62aC899E42883aC6",
+    explorer: "https://mumbai.polygonscan.com/address/0xEeA8CA7Ba0283156613F574F62aC899E42883aC6"
+}

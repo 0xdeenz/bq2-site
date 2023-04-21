@@ -92,7 +92,7 @@ export default function QuizPage ({ quiz }) {
         setButtonAwaiting(true)
 
         setToast(
-            `Generating proof`,
+            `Generating proof...`,
             `hang tight, this might take a while`
         )
 

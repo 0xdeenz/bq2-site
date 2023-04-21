@@ -14,6 +14,7 @@ module.exports = {
             resolve: {
                 fallback: {
                     'assert': require.resolve('assert'),
+                    'BigInt': require.resolve('big-integer'),
                     'constants': false,
                     'crypto': false,
                     'fs': false,
